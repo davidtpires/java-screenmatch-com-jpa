@@ -33,5 +33,6 @@ build/
 .vscode/
 
 ### Pessoal ###
-/src/main/java/br/com/alura/screenmatch/service/ConsultaChatGPT.java
+src/main/java/br/com/alura/screenmatch/service/ConsultaChatGPT.java
+
 
