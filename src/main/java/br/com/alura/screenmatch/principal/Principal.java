@@ -4,7 +4,6 @@ import br.com.alura.screenmatch.model.*;
 import br.com.alura.screenmatch.repository.SerieRepository;
 import br.com.alura.screenmatch.service.ConsumoApi;
 import br.com.alura.screenmatch.service.ConverteDados;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -36,6 +35,7 @@ public class Principal {
                     5 - Buscar séries por ator
                     6 - TOP 5 séries
                     7 - Buscar séries por categoria 
+                    8 - Buscar séries por filtro
                     0 - Sair                                 
                     """;
 
@@ -64,6 +64,9 @@ public class Principal {
                     break;
                 case 7:
                     buscarSeriePorCategoria();
+                    break;
+                case 8:
+                    filtrarSeriesPorTemporadaEAvaliacao();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -165,4 +168,17 @@ public class Principal {
         System.out.println("Séries da categoria " + nomeGenero);
         seriesPorCategoria.forEach(System.out::println);
     }
+
+    private void filtrarSeriesPorTemporadaEAvaliacao(){
+        System.out.println("Qual o número máximo de temporadas que a série deve ter? ");
+        var maximoTemporadas = leitura.nextInt();
+        leitura.nextLine();
+        System.out.println("Qual a avaliação mínima que a série deve ter");
+        var avalicaoMinimaTemporada = leitura.nextDouble();
+        List<Serie> seriesFiltradas = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(maximoTemporadas, avalicaoMinimaTemporada);
+        System.out.println("Serie com no máximo "+ maximoTemporadas +" e avaliações no mínimo "+ avalicaoMinimaTemporada);
+        seriesFiltradas.forEach(s ->
+                System.out.println(s.getTitulo() + "  - avaliação: " + s.getAvaliacao()));
+    }
+
 }
