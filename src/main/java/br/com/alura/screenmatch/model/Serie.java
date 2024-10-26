@@ -36,7 +36,7 @@ public class Serie {
         this.genero = Categoria.fromString(dadosSerie.genero().split(",")[0].trim());
         this.atores = dadosSerie.atores();
         this.poster = dadosSerie.poster();
-//        this.sinopse = ConsultaChatGPT.obterTraducao(dadosSerie.sinopse()).trim();
+//        this.sinopse = ConsultaChatGPT.o1bterTraducao(dadosSerie.sinopse()).trim();
         this.sinopse = ConsultaMyMemory.obterTraducao(dadosSerie.sinopse()).trim();
     }
 

@@ -175,7 +175,8 @@ public class Principal {
         leitura.nextLine();
         System.out.println("Qual a avaliação mínima que a série deve ter");
         var avalicaoMinimaTemporada = leitura.nextDouble();
-        List<Serie> seriesFiltradas = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(maximoTemporadas, avalicaoMinimaTemporada);
+//        List<Serie> seriesFiltradas = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(maximoTemporadas, avalicaoMinimaTemporada);
+        List<Serie> seriesFiltradas = repositorio.seriesPorTemporadaEAvaliacao(maximoTemporadas, avalicaoMinimaTemporada);
         System.out.println("Serie com no máximo "+ maximoTemporadas +" e avaliações no mínimo "+ avalicaoMinimaTemporada);
         seriesFiltradas.forEach(s ->
                 System.out.println(s.getTitulo() + "  - avaliação: " + s.getAvaliacao()));
